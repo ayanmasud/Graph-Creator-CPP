@@ -10,7 +10,7 @@
 #include <algorithm>
 
 void print(int graph[20][20], char vertices[20]);
-bool dijkstra(int graph[20][20], char vertices[20], char start, char end, int& totalDistance, char path[], int& pathLength);
+bool dijkstra(int graph[20][20], char vertices[20], char start, char end, int& totalDistance, char path[]);
 int findMinDistance(int dist[], bool visited[], int size);
 
 using namespace std;
