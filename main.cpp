@@ -135,6 +135,16 @@ int main() {
       bool pathExists = dijkstra(graph, vertices, vstart, vend, totalDistance, path);
       
       if (pathExists) {
+        cout << "Shortest path: ";
+        for (int i = 0; i < 20; i++) {
+          if (path[i] != '\0') {
+            cout << path[i];
+            if (path[i+1] != '\0') {
+              cout << " -> ";
+            }
+          }
+        }
+        cout << endl;
 	      cout << "Shortest distance: " << totalDistance << endl;
       } 
       else {
@@ -227,8 +237,8 @@ bool dijkstra(int graph[20][20], char vertices[20], char start, char end, int& t
     // update distances for adjacent vertices
     for (int j = 0; j < 20; j++) {
       if (!visited[j] && vertices[j] != ' ' && graph[vsmallDist][j] != -1 && dist[vsmallDist] != INT_MAX && dist[vsmallDist] + graph[vsmallDist][j] < dist[j]) {
-	dist[j] = dist[vsmallDist] + graph[vsmallDist][j];
-	prev[j] = vsmallDist;
+	      dist[j] = dist[vsmallDist] + graph[vsmallDist][j];
+	      prev[j] = vsmallDist;
       }
     }
   }
@@ -237,8 +247,24 @@ bool dijkstra(int graph[20][20], char vertices[20], char start, char end, int& t
   if (dist[endIndex] == INT_MAX) {
     return false;
   }
-  
+
   totalDistance = dist[endIndex];
+  
+  // storing the path
+  char reversedPath[20];
+  int current = endIndex;
+  int pathLength = 0;
+  
+  while (current != -1) {
+    reversedPath[pathLength++] = vertices[current];
+    current = prev[current];
+  }
+  
+  // Reverse the path to get correct order
+  for (int i = 0; i < pathLength; i++) {
+    path[i] = reversedPath[pathLength - 1 - i];
+  }
+  
   return true;
 }
 
