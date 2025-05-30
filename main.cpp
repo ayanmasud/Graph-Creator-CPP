@@ -145,10 +145,10 @@ int main() {
           }
         }
         cout << endl;
-	      cout << "Shortest distance: " << totalDistance << endl;
+	cout << "Shortest distance: " << totalDistance << endl;
       } 
       else {
-	      cout << "There's no path between " << vstart << " and " << vend << endl;
+	cout << "There's no path between " << vstart << " and " << vend << endl;
       }
     }
     else if (strcmp(cmd, "QUIT") == 0) { // quit command
